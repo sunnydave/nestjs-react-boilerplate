@@ -1,0 +1,34 @@
+version: "3.5"
+
+services:
+  api:
+    build:
+      context: ./packages/api
+      dockerfile: Dockerfile.dev
+    env_file:
+      - ./packages/api/.env.dev
+    ports:
+      - 3001:3001
+    volumes:
+      - ./packages/api/:/app
+      - /app/node_modules
+
+  webui:
+    build:
+      context: ./packages/webui
+      dockerfile: Dockerfile.dev
+    env_file:
+      - packages/webui/.env.dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./packages/webui/:/app
+      - /app/node_modules
+
+#  postgres:
+#    image: postgres:15
+#    environment:
+#      POSTGRES_PASSWORD: example
+#    ports:
+#      - 5432:5432
+
