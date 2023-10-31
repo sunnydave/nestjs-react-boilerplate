@@ -51,15 +51,6 @@ function AppLayout (props: AppLayoutProps) {
                                 <Menu.Item key="home" icon={<HomeOutlined />}>
                                     Home
                                 </Menu.Item>
-                                <Menu.Item key="files" icon={<FolderOutlined />}>
-                                    Files
-                                </Menu.Item>
-                                {/*<Menu.Item key="3" icon={<UserOutlined />}>*/}
-                                {/*    Users*/}
-                                {/*</Menu.Item>*/}
-                                {/*<Menu.Item key="3" icon={<SolutionOutlined />}>*/}
-                                {/*    Clients*/}
-                                {/*</Menu.Item>*/}
                             </Menu>
                         </Sider> : null
                 }
