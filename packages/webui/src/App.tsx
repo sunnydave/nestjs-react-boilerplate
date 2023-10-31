@@ -1,25 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {LocalStorageService} from "./services";
+import {useRoutes} from "react-router-dom";
+import routes from './routes';
 
 function App() {
+  const token = LocalStorageService.getToken();
+  const role = LocalStorageService.get('role');
+  const isOrgAdmin = !!(role === 'org_admin');
+  const isLoggedIn = (token && token != '')?true:false;
+  const routing = useRoutes(routes(isLoggedIn, isOrgAdmin));
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <React.Fragment>
+        {routing}
+      </React.Fragment>
   );
 }
 
